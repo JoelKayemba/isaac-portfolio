@@ -1,4 +1,5 @@
 export { Nav } from './Nav'
+export { AmbianceWidget } from './AmbianceWidget'
 export { Hero } from './Hero'
 export { HeroTransition } from './HeroTransition'
 export { Section } from './Section'

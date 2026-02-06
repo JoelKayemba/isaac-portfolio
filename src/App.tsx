@@ -1,3 +1,4 @@
+import { AmbianceProvider } from './contexts/AmbianceContext'
 import {
   Nav,
   Hero,
@@ -9,13 +10,16 @@ import {
   Reseaux,
   Contact,
   Footer,
+  AmbianceWidget,
 } from './components'
 
 function App() {
   return (
-    <div className="min-h-screen bg-white text-charcoal antialiased">
-      <Nav />
-      <Hero />
+    <AmbianceProvider>
+      <div className="min-h-screen bg-white text-charcoal antialiased">
+        <Nav />
+        <AmbianceWidget />
+        <Hero />
       <HeroTransition />
       <Univers />
       <Musiques />
@@ -23,8 +27,9 @@ function App() {
       <Bio />
       <Reseaux />
       <Contact />
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </AmbianceProvider>
   )
 }
 

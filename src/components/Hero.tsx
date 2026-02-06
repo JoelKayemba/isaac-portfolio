@@ -1,5 +1,6 @@
 import { motion } from 'motion/react'
 import { socials } from '../data'
+import { useAmbiance } from '../contexts/AmbianceContext'
 import { TypewriterText } from './TypewriterText'
 
 const heroImage = new URL('../assets/black-user.png', import.meta.url).href
@@ -33,6 +34,23 @@ const SOCIAL_ICONS: Record<string, React.ComponentType<{ className?: string }>> 
 const PLATFORMS = socials
   .filter((s) => SOCIAL_ICONS[s.name])
   .map((s) => ({ ...s, icon: SOCIAL_ICONS[s.name]! }))
+
+function AmbianceButton() {
+  const { play } = useAmbiance()
+  return (
+    <motion.button
+      type="button"
+      onClick={play}
+      className="absolute top-24 right-4 md:right-8 text-white/30 hover:text-white/60 font-display text-[10px] uppercase tracking-[0.25em] transition-colors z-10"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 2.5, duration: 0.5 }}
+      aria-label="Activer l'ambiance"
+    >
+      Activer l'ambiance
+    </motion.button>
+  )
+}
 
 function SpotifyIcon({ className }: { className?: string }) {
   return (
@@ -295,17 +313,8 @@ export function Hero() {
         })}
       </motion.div>
 
-      {/* Bouton son optionnel */}
-      <motion.button
-        type="button"
-        className="absolute top-24 right-4 md:right-8 text-white/30 hover:text-white/60 font-display text-[10px] uppercase tracking-[0.25em] transition-colors z-10"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2.5, duration: 0.5 }}
-        aria-label="Activer l'ambiance"
-      >
-        Activer l'ambiance
-      </motion.button>
+      {/* Bouton son : lance l'ambiance MBONGO (lecture continue dans toute l'app) */}
+      <AmbianceButton />
     </header>
   )
 }
