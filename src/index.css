@@ -1,0 +1,204 @@
+@import "tailwindcss";
+
+/* Palette monochrome Isaac Portfolio */
+@theme {
+  /* Slate Grey - Principal */
+  --color-slate: #404F68;
+  /* Silver Grey */
+  --color-silver: #C4C4C4;
+  /* Steel Grey */
+  --color-steel: #777777;
+  /* Charcoal Grey */
+  --color-charcoal: #333333;
+  /* Granite Grey */
+  --color-granite: #4A4A4A;
+  /* Polices : robotique / moderne */
+  --font-display: "Orbitron", sans-serif;
+  --font-sans: "Exo 2", system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-sans);
+  background-color: #fff;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+a {
+  color: inherit;
+}
+
+/* ---- Hero immersive : grain, particules, fond ---- */
+.hero-root {
+  --hero-bg: #1a1a1d;
+}
+
+.hero-grain {
+  position: absolute;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  opacity: 0.06;
+  pointer-events: none;
+  animation: hero-grain 12s steps(8) infinite;
+}
+
+.hero-grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
+@keyframes hero-grain {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(-1%, -1%); }
+  50% { transform: translate(1%, 0); }
+  75% { transform: translate(0, 1%); }
+}
+
+.hero-particle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  pointer-events: none;
+  animation: hero-float 20s ease-in-out infinite;
+}
+
+@keyframes hero-float {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.12; }
+  33% { transform: translate(4px, -8px) scale(1.1); opacity: 0.18; }
+  66% { transform: translate(-3px, 4px) scale(0.95); opacity: 0.1; }
+}
+
+.hero-cta-glow:hover {
+  box-shadow: 0 0 24px rgba(64, 79, 104, 0.4);
+}
+
+.hero-cta-outline:hover {
+  box-shadow: 0 0 20px rgba(196, 196, 196, 0.25);
+}
+
+/* ---- Section immersion (traversée) ---- */
+.immersion-root {
+  background: #0a0a0b;
+  cursor: default;
+}
+
+.immersion-grain {
+  position: absolute;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  opacity: 0.05;
+  pointer-events: none;
+  animation: hero-grain 14s steps(6) infinite;
+}
+
+.immersion-grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
+.immersion-smoke {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.02) 20%,
+    rgba(255, 255, 255, 0.03) 50%,
+    rgba(255, 255, 255, 0.02) 80%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: immersion-smoke 25s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes immersion-smoke {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ---- Section L'UNIVERS — vidéo (B&W + grain) ---- */
+.univers-video-bw {
+  filter: grayscale(1) contrast(1.06) brightness(0.96);
+}
+
+.univers-video-grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.06;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='vg'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23vg)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
+/* ---- Section Musiques — lecteur éditorial ---- */
+.musiques-root {
+  background: #1a1b1e;
+  cursor: default;
+}
+
+.musiques-grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23m)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
+/* Cadre ovale par piste + hover zoom */
+.musiques-frame {
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+.musiques-cover {
+  transition: transform 0.4s ease;
+}
+.musiques-cover:hover img {
+  transform: scale(1.05);
+}
+
+/* Carte : hover → élévation */
+.musiques-card {
+  transition: box-shadow 0.4s ease, border-color 0.3s ease;
+}
+.musiques-card:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Timeline visuelle : hover → glow subtil */
+.musiques-timeline:hover .musiques-timeline-cursor {
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
+}
+
+/* ---- Section Phrases / Émotions — ondes sonores ---- */
+.phrases-root {
+  background: #fafafa;
+}
+
+/* ---- Typewriter (Hero + Musiques) ---- */
+.typewriter-cursor {
+  opacity: 1;
+  animation: typewriter-blink 0.8s step-end infinite;
+}
+@keyframes typewriter-blink {
+  50% { opacity: 0; }
+}
